@@ -9,6 +9,6 @@
 	</head>
 	<body>
          <?php include("header.php");?>
-		 <!--magnifique commentaire-->
+		 <!--magnifique commentaire BA-->
 	</body>
 </html>
