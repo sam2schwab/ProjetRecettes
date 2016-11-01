@@ -9,7 +9,5 @@
 	</head>
 	<body>
          <?php include("header.php");?>
-		 <!--magnifique commentaire ss-->
-		 <!--magnifique commentaire BA-->
 	</body>
 </html>
