@@ -9,5 +9,6 @@
 	</head>
 	<body>
          <?php include("header.php");?>
+		 <!--magnifique commentaire-->
 	</body>
 </html>
