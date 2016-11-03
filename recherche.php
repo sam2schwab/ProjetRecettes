@@ -18,14 +18,14 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 					<div class="panel-heading">Critères de recherche</div>
 					<div class="panel-body">
 						<!--Mot-cles-->
-						<form>
+						<form id="keyword-form">
 							<button type="reset" class="close">&times;</button>
 							<h4><strong>Mots-clés</strong></h4>
 							<input type="text" class="form-control" data-role="tagsinput" id="ingredients-with">
 						</form>
 						<hr>
 						<!--ingredients-->
-						<form>
+						<form id="ingredients-form">
 							<button type="reset" class="close">&times;</button>
 							<h4><strong>Ingrédients</strong></h4>
 							<div class="form-group">
@@ -39,41 +39,43 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 						</form>
 						<hr>
 						<!--cuisson-->
-						<form>
+						<form id="cooking-form">
 							<button type="reset" class="close">&times;</button>
 							<h4><strong>Cuisson</strong></h4>
 							<div class="radio">
-								<label><input type="radio" name="cookingradio">Avec</label>
+								<label><input type="radio" name="cooking" value="with">Avec</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="cookingradio">Sans</label>
+								<label><input type="radio" name="cooking" value="without">Sans</label>
 							</div>
 						</form>
 						<hr>
 						<!--temps-->
-						<form>
+						<form id="time-form">
 							<button type="reset" class="close">&times;</button>
 							<h4><strong>Temps requis</strong></h4>
-							<div class="form-group">
+							<div class="form-group" style="margin:0">
 								<label for="prep-time">Préparation</label>
 								<div class="input-group" id="prep-time">
-									<span class="input-group-addon">&#8804;</span>
-									<input type="number" min="0" data-bind="value:replyNumber" class="form-control">
-									<span class="input-group-addon">mn</span>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="cook-time">Cuisson</label>
-								<div class="input-group" id="cook-time">
 									<span class="input-group-addon">&#8804;</span>
 									<input type="number" min="0" class="form-control">
 									<span class="input-group-addon">mn</span>
 								</div>
 							</div>
+							<div class="collapse in"  id="cook-time-group">
+								<div class="form-group" style="margin-top:15px;margin-bottom:0">
+									<label for="cook-time">Cuisson</label>
+									<div class="input-group" id="cook-time">
+										<span class="input-group-addon">&#8804;</span>
+										<input type="number" min="0" class="form-control">
+										<span class="input-group-addon">mn</span>
+									</div>
+								</div>
+							</div>
 						</form>
 						<hr>
 						<!--categorie-->
-						<form>
+						<form id="category-form">
 							<button type="reset" class="close">&times;</button>
 							<h4><strong>Catégories</strong></h4>
 							<?php foreach ($categories as $value) {
