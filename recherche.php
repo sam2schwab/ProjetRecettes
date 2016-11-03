@@ -8,6 +8,7 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 		<meta charset="utf8">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<?php include("includes.php");?>
+		<script type="text/javascript" src="recherche.js"></script>
 	</head>
 	<body>
     	<?php include("header.php");?>
@@ -17,15 +18,15 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 					<div class="panel-heading">Critères de recherche</div>
 					<div class="panel-body">
 						<!--Mot-cles-->
-						<div>
-							<button type="button" class="close">&times;</button>
+						<form>
+							<button type="reset" class="close">&times;</button>
 							<h4><strong>Mots-clés</strong></h4>
 							<input type="text" class="form-control" data-role="tagsinput" id="ingredients-with">
-						</div>
+						</form>
 						<hr>
 						<!--ingredients-->
-						<div>
-							<button type="button" class="close">&times;</button>
+						<form>
+							<button type="reset" class="close">&times;</button>
 							<h4><strong>Ingrédients</strong></h4>
 							<div class="form-group">
 								<label for="ingredients-with">Avec:</label>			
@@ -35,11 +36,11 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 								<label for="ingredients-without">Sans:</label>			
 								<input type="text" class="form-control" data-role="tagsinput" id="ingredients-without">
 							</div>
-						</div>
+						</form>
 						<hr>
 						<!--cuisson-->
-						<div>
-							<button type="button" class="close">&times;</button>
+						<form>
+							<button type="reset" class="close">&times;</button>
 							<h4><strong>Cuisson</strong></h4>
 							<div class="radio">
 								<label><input type="radio" name="cookingradio">Avec</label>
@@ -47,11 +48,11 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 							<div class="radio">
 								<label><input type="radio" name="cookingradio">Sans</label>
 							</div>
-						</div>
+						</form>
 						<hr>
 						<!--temps-->
-						<div>
-							<button type="button" class="close">&times;</button>
+						<form>
+							<button type="reset" class="close">&times;</button>
 							<h4><strong>Temps requis</strong></h4>
 							<div class="form-group">
 								<label for="prep-time">Préparation</label>
@@ -69,18 +70,18 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 									<span class="input-group-addon">mn</span>
 								</div>
 							</div>
-						</div>
+						</form>
 						<hr>
 						<!--categorie-->
-						<div>
-							<button type="button" class="close">&times;</button>
+						<form>
+							<button type="reset" class="close">&times;</button>
 							<h4><strong>Catégories</strong></h4>
 							<?php foreach ($categories as $value) {
 							echo '<div class="checkbox">
 								<label><input type="checkbox" value="">'.$value.'</label>
 							</div>';
 							}?>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
