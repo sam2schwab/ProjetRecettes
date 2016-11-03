@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "recherche.php, nouvelle fenetre",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost/ProjetRecettes/recherche.php",
+            "sourceMaps": true,
+            "webRoot": "${workspaceRoot}",
+            "runtimeArgs": [
+                "--new-window", //Open in new window
+                "--remote-debugging-port=9222"
+            ]
+        }
+    ]
+}
