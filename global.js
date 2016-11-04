@@ -23,6 +23,31 @@ $(function() {
 
       });
   });
-  
+
+    $('input[type=radio][name=cooking]').change(function() {
+        if (this.value == 'without') {
+            $("#cook-time-collapse").collapse("hide");
+        }
+        else {
+            $("#cook-time-collapse").collapse("show");
+        }
+    });
+
+    $("#cooking-form button[type=reset]").click(function(){
+        $("#cook-time-collapse").collapse("show");
+    });
+
+    
+    var a = $("#cook-time-collapse");
+    while (a.next()[0] == undefined)
+         a = a.parent();
+    console.log(a.next()[0]);
+    if (parseInt(a.next().css("margin-top").replace("px",""),10) <= 15)
+        a.next().css("margin-top", 15)
+
+    a = $("#cook-time-collapse");
+    while (a.prev()[0] == undefined)
+         a = a.parent();
+    a.prev().css("margin-bottom", 0)
 });
 

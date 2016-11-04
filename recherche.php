@@ -54,7 +54,7 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 						<form id="time-form">
 							<button type="reset" class="close">&times;</button>
 							<h4><strong>Temps requis</strong></h4>
-							<div class="form-group" style="margin:0">
+							<div class="form-group">
 								<label for="prep-time">Préparation</label>
 								<div class="input-group" id="prep-time">
 									<span class="input-group-addon">&#8804;</span>
@@ -62,8 +62,8 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 									<span class="input-group-addon">mn</span>
 								</div>
 							</div>
-							<div class="collapse in"  id="cook-time-group">
-								<div class="form-group" style="margin-top:15px;margin-bottom:0">
+							<div class="collapse in"  id="cook-time-collapse">
+								<div class="form-group" id="cook-time-group">
 									<label for="cook-time">Cuisson</label>
 									<div class="input-group" id="cook-time">
 										<span class="input-group-addon">&#8804;</span>

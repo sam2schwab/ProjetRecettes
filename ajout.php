@@ -27,15 +27,9 @@ $ingredients = ["carotte","betterave","couscous", "cumin", "farine kamut"];
 			<!--Ajout du temps de préparation-->
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Temps de préparation</label>
-				<div class="col-sm-5">
+				<div class="col-sm-10">
 					<div class="input-group">
-						<input type="text" class="form-control" id="tempspreparationheures" placeholder="Heures">
-						<div class="input-group-addon">h</div>
-					</div>
-				</div>
-				<div class="col-sm-5">
-					<div class="input-group">
-						<input type="text" class="form-control" id="tempspreparationminutes" placeholder="Minutes">
+						<input type="text" class="form-control" id="prep-time" placeholder="Minutes">
 						<div class="input-group-addon">mn</div>
 					</div>
 				</div>
@@ -44,31 +38,27 @@ $ingredients = ["carotte","betterave","couscous", "cumin", "farine kamut"];
 			<!--Ajout d'une cuisson-->
 			<fieldset class="form-group row">
 				<label for="cuisson" class="col-sm-2 col-form-label">Cuisson</label>
-      			<div class="col-sm-10">
-        			<div class="form-check">
-						<label class="radio-inline"><input type="radio" name="optradio">Oui</label>
-						<label class="radio-inline"><input type="radio" name="optradio">Non</label>
+				<div class="col-sm-10">
+					<div class="form-check">
+						<label class="radio-inline"><input type="radio" name="cooking" value="with">Avec</label>
+						<label class="radio-inline"><input type="radio" name="cooking" value="without">Sans</label>
 					</div>
-      			</div>
+				</div>
 			</fieldset>
 
 			<!--Ajout du temps de cuisson-->
-			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Temps de cuisson</label>
-				<div class="col-sm-5">
-					<div class="input-group">
-						<input type="text" class="form-control" id="tempscuissonheures" placeholder="Heures" disabled>
-						<div class="input-group-addon">h</div>
-					</div>
-				</div>
-				<div class="col-sm-5">
-					<div class="input-group">
-						<input type="text" class="form-control" id="tempscuissonminutes" placeholder="Minutes" disabled>
-						<div class="input-group-addon">mn</div>
+			<div class="collapse in"  id="cook-time-collapse">
+				<div class="form-group row" id="cook-time-group">
+					<label class="col-sm-2 col-form-label">Temps de cuisson</label>
+
+					<div class="col-sm-10">
+						<div class="input-group">
+							<input type="text" class="form-control" id="cook-time" placeholder="Minutes">
+							<div class="input-group-addon">mn</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
 			<!--Ajout d'une portion-->
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Portions</label>
