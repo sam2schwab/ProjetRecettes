@@ -1,4 +1,4 @@
-$(function() {
+ $(function() {
 
   // We can attach the `fileselect` event to all file inputs on the page
   $(document).on('change', ':file', function() {
@@ -39,15 +39,21 @@ $(function() {
 
     
     var a = $("#cook-time-collapse");
-    while (a.next()[0] == undefined)
-         a = a.parent();
-    console.log(a.next()[0]);
-    if (parseInt(a.next().css("margin-top").replace("px",""),10) <= 15)
-        a.next().css("margin-top", 15)
+    if(a[0] != undefined)
+    {
+        while (a.next()[0] == undefined)
+            a = a.parent();
+        console.log(a.next()[0]);
+        if (parseInt(a.next().css("margin-top").replace("px",""),10) <= 15)
+            a.next().css("margin-top", 15)
+    }
 
     a = $("#cook-time-collapse");
-    while (a.prev()[0] == undefined)
-         a = a.parent();
-    a.prev().css("margin-bottom", 0)
-});
+    if(a[0] != undefined)
+    {
+        while (a.prev()[0] == undefined)
+            a = a.parent();
+        a.prev().css("margin-bottom", 0)
+    }
+ });
 
