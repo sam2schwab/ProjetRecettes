@@ -2,7 +2,7 @@
     margin:0;
 }
 
-.bootstrap-tagsinput{
+.bootstrap-tagsinput {
     width:100%;
 }
 
@@ -10,8 +10,24 @@
     padding: 0;
 }
 
-#cook-time-group{
+#cook-time-group {
     margin-top: 15px;
     margin-bottom: 0;
 }
 
+.centered-and-cropped {
+     object-fit: cover;
+}
+
+.recipe-details {
+    height: 100px;
+    margin-left: 110px;
+}
+
+.starrr {
+    color: #ee8b2d;
+}
+
+#rating-search {
+    margin-right: 3px
+}

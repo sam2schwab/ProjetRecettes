@@ -9,11 +9,12 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<?php include("includes.php");?>
 		<script type="text/javascript" src="recherche.js"></script>
+		<script type="text/javascript" src="starrr.js"></script>
 	</head>
 	<body>
     	<?php include("header.php");?>
 		<article class="container">
-			<div class="col-xs-3">
+			<div class="col-sm-3">
 				<div class="panel panel-default">
 					<div class="panel-heading">Critères de recherche</div>
 					<div class="panel-body">
@@ -36,6 +37,14 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 								<label for="ingredients-without">Sans:</label>			
 								<input type="text" class="form-control" data-role="tagsinput" id="ingredients-without">
 							</div>
+						</form>
+						<hr>
+						<!--Note appreciation-->
+						<form id="rating-form">
+							<button type="reset" class="close">&times;</button>
+							<h4><strong>Appréciation</strong></h4>
+							<h4><div class="starrr pull-left" id="rating-search"></div></h4>
+							<p>et plus<p>
 						</form>
 						<hr>
 						<!--cuisson-->
@@ -87,8 +96,20 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-9">
-				
+			<div class="col-sm-9">
+			<?php for($i = 0;$i < 20; $i++):?>
+				<div>
+					<img src="pasta.jpg" class="centered-and-cropped pull-left" width="100" height="100" alt="photo">
+					<div class="recipe-details">
+						<h4><div class="starrr starr-readonly pull-right" data-rating='4'></div></h4>
+						<h4><strong>Pâtes aux crevettes et aux olives</strong></h4>
+						<p><span class="glyphicon glyphicon-tag"></span> Catégorie : Repas<p>
+						<p><span class="glyphicon glyphicon-time"></span> Préparation : 15 min<p>
+						<p><span class="glyphicon glyphicon-fire"></span> Cuisson : 25 min<p>
+					</div>
+				</div>
+				<hr>
+			<?php endfor; ?>
 			</div>			
 		</article>
 	</body>
