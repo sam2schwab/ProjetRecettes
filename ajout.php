@@ -53,7 +53,7 @@ $ingredients = ["carotte","betterave","couscous", "cumin", "farine kamut"];
 
 					<div class="col-sm-10">
 						<div class="input-group">
-							<input type="text" class="form-control" id="cook-time" placeholder="Minutes">
+							<input type="number" class="form-control" id="cook-time" placeholder="Minutes">
 							<div class="input-group-addon">mn</div>
 						</div>
 					</div>
@@ -81,7 +81,7 @@ $ingredients = ["carotte","betterave","couscous", "cumin", "farine kamut"];
 				<label class="col-sm-2 col-form-label">Ingrédients</label>
 				<div class="col-sm-10">
 					<div class="input-group">
-						<input type="text" class="form-control" id="ingredient" placeholder="Ingrédient">
+						<input type="text" class="form-control" id="ingredient" placeholder="Quantité">
 						<span class="input-group-btn" style="width:0px;"></span>
 						<select class="form-control" id="choixmesure" style="margin-left:-1px;">
 							<?php foreach ($mesures as $value) {
