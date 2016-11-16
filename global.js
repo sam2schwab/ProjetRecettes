@@ -24,6 +24,8 @@
       });
   });
 
+  // Affiche ou non le temps de cuisson (radio)
+
     $('input[type=radio][name=cooking]').change(function() {
         if (this.value == 'without') {
             $("#cook-time-collapse").collapse("hide");
@@ -56,4 +58,16 @@
         a.prev().css("margin-bottom", 0)
     }
  });
+
+// Affichage de l'ingrédient inscrit dans un tableau'
+
+function afficheingredient(){
+    //q_ingredient = document.forms[0].ingredient.value;
+    //m_ingredient = document.forms[0].choixmesure.value;
+    //n_ingredient = document.forms[0].choixingredient.value; 
+
+    //tableau_ingredients.push({ quantite: q_ingredient, mesure: m_ingredient, nom: n_ingredient });
+    alert("ça marche !");
+}
+
 
