@@ -2,7 +2,6 @@
 $portions = ["morceaux","personnes"];
 $mesures = ["Mesure", "x", "cup","c. à soupe", "c. à thé", "L", "dL", "cL", "mL", "oz", "Kg", "g"];
 $ingredients = ["Ingrédient", "carotte","betterave","couscous", "cumin", "farine kamut"];
-$tableau_ingredient = "test";
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +97,7 @@ $tableau_ingredient = "test";
 							?>
 						</select>
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-info" id="ajoutingredient" onclick="afficheingredient('<?php echo $tableau_ingredient ?>')">
+							<button type="button" class="btn btn-info" id="ajoutingredient" onclick="afficheingredient()">
 								<span class="glyphicon glyphicon-plus"></span>
 							</button>		
 						</span>
