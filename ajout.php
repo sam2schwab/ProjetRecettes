@@ -92,7 +92,7 @@ $ingredients = [];
 						<span class="input-group-btn" style="width:0px;"></span>
   						<input id="choixingredient" class="form-control" style="margin-left:-2px;" placeholder="Nom ingrédient">
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-info" id="ajoutingredient" onclick="afficheingredient()">
+							<button type="button" class="btn btn-info" id="ajoutingredient" style="margin-left:-2px;" onclick="afficheingredient()">
 								<span class="glyphicon glyphicon-plus"></span>
 							</button>		
 						</span>
