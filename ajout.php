@@ -1,7 +1,7 @@
 <?php $page = "ajout" ;
 $portions = ["morceaux","personnes"];
 $mesures = ["Mesure", "x", "cup","c. à soupe", "c. à thé", "L", "dL", "cL", "mL", "oz", "Kg", "g"];
-$ingredients = ["Ingrédient", "carotte","betterave","couscous", "cumin", "farine kamut", "neige", "chips", "amour", "eau"];
+$ingredients = [];
 ?>
 
 <!DOCTYPE html>
@@ -90,12 +90,7 @@ $ingredients = ["Ingrédient", "carotte","betterave","couscous", "cumin", "farin
 							?>						
 						</select>
 						<span class="input-group-btn" style="width:0px;"></span>
-						<select class="form-control" id="choixingredient" style="margin-left:-2px;">
-							<?php foreach ($ingredients as $value) {
-								echo '<option>'.$value.'</option>';
-							}
-							?>
-						</select>
+  						<input id="choixingredient" class="form-control" style="margin-left:-2px;" placeholder="Nom ingrédient">
 						<span class="input-group-btn">
 							<button type="button" class="btn btn-info" id="ajoutingredient" onclick="afficheingredient()">
 								<span class="glyphicon glyphicon-plus"></span>
