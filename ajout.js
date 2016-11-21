@@ -62,8 +62,9 @@ function afficheingredient(){
     
     id_ingr += 1;
 
-    document.getElementById("ingredient").reset();
-    document.getElementById("choixmesure").reset();
-    document.getElementById("choixingredient").reset(); 
+    // Valeurs par défaut des champs de remplissage pour ingrédient 
+    document.forms[0].ingredient.value = "";
+    document.forms[0].choixmesure.value = "Mesure";
+    document.forms[0].choixingredient.value = ""; 
 
 };
