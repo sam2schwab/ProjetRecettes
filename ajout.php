@@ -1,7 +1,7 @@
 <?php $page = "ajout" ;
 $portions = ["morceaux","personnes"];
 $mesures = ["Mesure", "x", "cup","c. à soupe", "c. à thé", "L", "dL", "cL", "mL", "oz", "Kg", "g"];
-$ingredients = ["Ingrédient", "carotte","betterave","couscous", "cumin", "farine kamut"];
+$ingredients = ["Ingrédient", "carotte","betterave","couscous", "cumin", "farine kamut", "neige", "chips", "amour", "eau"];
 ?>
 
 <!DOCTYPE html>
@@ -101,6 +101,10 @@ $ingredients = ["Ingrédient", "carotte","betterave","couscous", "cumin", "farin
 								<span class="glyphicon glyphicon-plus"></span>
 							</button>		
 						</span>
+					</div>
+					<div>
+						<div id="liste_ingredients">
+						</div>
 					</div>
 				</div>
 			</div>
