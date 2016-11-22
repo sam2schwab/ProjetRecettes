@@ -1,4 +1,6 @@
+
 <?php $page = "ajout" ;
+$tableau_ingredients = [];
 $portions = ["morceaux","personnes"];
 $mesures = ["Mesure", "x", "cup","c. à soupe", "c. à thé", "L", "dL", "cL", "mL", "oz", "Kg", "g"];
 $ingredients = [];
@@ -14,7 +16,7 @@ $ingredients = [];
 	<body>
 		<?php include("header.php");?>
 		<article class="container">
-  		<form>
+  		<form action="ajout_post.php" method="post" target="_blank">
     		
 			<!--Ajout du titre-->
 			<div class="form-group row">
@@ -89,10 +91,19 @@ $ingredients = [];
 							}
 							?>						
 						</select>
+						
+						<!--   Définition fonction pour obtenir un tableau des ingrédients-->
+						<script type="text/javascript">  
+						function ajout_ingre_php()  
+						{  
+							$tableau_ingredients = ajout_ingre_js();
+						}  
+						</script>
+
 						<span class="input-group-btn" style="width:0px;"></span>
   						<input id="choixingredient" class="form-control" style="margin-left:-2px;" placeholder="Nom ingrédient">
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-info" id="ajoutingredient" style="margin-left:-2px;" onclick="afficheingredient()">
+							<button type="button" class="btn btn-info" id="ajoutingredient" style="margin-left:-2px;" onclick="ajout_ingre_php()">
 								<span class="glyphicon glyphicon-plus"></span>
 							</button>		
 						</span>
@@ -100,6 +111,7 @@ $ingredients = [];
 					<div>
 						<div id="liste_ingredients">
 						</div>
+						<input type="hidden" id="tab_ingre" name="tab_ingre" value="<?php print base64_encode(serialize($tableau_ingredients)) ?>">
 					</div>
 				</div>
 			</div>
@@ -124,7 +136,7 @@ $ingredients = [];
             	            Parcourir<input type="file" style="display: none;">
                 	    </span>
                 		</label>
-						<input type="text" class="form-control" readonly>
+						<input type="text" class="form-control" id="photo" readonly>
             		</div>
             		<span class="help-block">
             	    	Sélectionner une photo
@@ -135,7 +147,7 @@ $ingredients = [];
 
     	<div class="form-group row">
       		<div class="offset-sm-2 col-sm-10">
-        		<button type="submit" class="btn btn-primary pull-right">Enregistrer la recette !</button>
+        		<button type="submit" class="btn btn-primary pull-right">Ajouter la recette !</button>
       		</div>
     	</div>
   		</form>

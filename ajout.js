@@ -15,7 +15,7 @@ $( function() {
     });
   } );
 
-function afficheingredient(){
+function ajout_ingre_js(){
 
     q_ingredient = document.forms[0].ingredient.value;
     m_ingredient = document.forms[0].choixmesure.value;
@@ -67,4 +67,5 @@ function afficheingredient(){
     document.forms[0].choixmesure.value = "Mesure";
     document.forms[0].choixingredient.value = ""; 
 
+    return tab_ing;
 };
