@@ -121,28 +121,37 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 					</div>
 				</div>
 				<div id="list-recipes">
-				<?php for($i = 0;$i < 10; $i++):
-					if($i != 0):?>
+				<?php 
+					$mysqli = new mysqli("192.168.0.105", "Recettes", "miammiam", "projet_recette");
+					$mysqli->set_charset('utf8');
+					$res = $mysqli->query("SELECT * FROM recette r, categorie c where r.categorie_recette = c.id_categorie ORDER BY titre_recette ASC");
+					$res->data_seek(0);
+					while($row = $res->fetch_assoc()):?>
 					<hr>
-					<?php endif; ?>
 					<a class="recipe-link" href="#">
 						<div class="recipe-info">
-							<img src="pasta.jpg" class="centered-and-cropped pull-left" width="110" height="110" alt="photo">
+							<img src="images/<?php echo $row['photo_recette']?>" class="centered-and-cropped pull-left" width="110" height="110" alt="photo">
 							<div class="recipe-details">
-								<h4><div class="starrr starr-readonly pull-right" data-rating='4'></div></h4>
-								<h4><strong>Pâtes aux crevettes et aux olives</strong></h4>
-								<p><span class="glyphicon glyphicon-tag"></span> Catégorie : Repas<p>
-								<p><span class="glyphicon glyphicon-time"></span> Préparation : 15 min<p>
-								<p><span class="glyphicon glyphicon-fire"></span> Cuisson : 25 min<p>
+								<h4><div class="starrr starr-readonly pull-right" data-rating=<?php echo $row['note_recette']?>></div></h4>
+								<h4><strong><?php echo $row['titre_recette']?></strong></h4>
+								<p><span class="glyphicon glyphicon-tag"></span> Catégorie : <?php echo $row['nom_categorie']?><p>
+								<p><span class="glyphicon glyphicon-time"></span> Préparation : <?php echo $row['temps_preparation_recette']?> min<p>
+								<p><span class="glyphicon glyphicon-fire"></span> Cuisson : <?php echo $row['cuisson_recette'] ? $row['temps_cuisson_recette'].' min' : 'Sans'  ?><p>
 							</div>
 						</div>
 					</a>
-				<?php endfor; ?>
+				<?php endwhile; ?>
+				<hr>
 				</div>
-				<ul class="pager">
-					<li><a href="#">Previous</a></li>
-					<li><a href="#">Next</a></li>
-				</ul>
+				<div class="text-center">
+					<ul class="pagination">
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a class="disabled">...</a></li>
+						<li><a href="#">50</a></li>
+					</ul>
+				</div>
 			</div>			
 		</article>
 	</body>
