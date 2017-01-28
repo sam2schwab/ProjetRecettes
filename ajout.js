@@ -3,20 +3,46 @@
 var tab_ing = [];
 var id_ingr = 0;
 
-var ingre_dispo = [
-        "eau",
-        "citron",
-        "carotte"
-    ];
+var ingre_dispo = [];
+
 var ingre_manquants = [];
 
+// Gestion autocomplete ingredients
+$("document").ready(function(){
+    var data = {
+        "action": "requete",
+        "table" : "ingredient",
+        "fields": "nom_ingredient"
+    };
+
+    $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "autocomplete.php", //Relative or absolute path to autocomplete.php file
+            data: data,
+            success: function(data) {
+                data.forEach(function(element) {
+                    ingre_dispo.push(element["nom_ingredient"]);
+                }, this);
+                // Complète la proposition d'ingrédients dispo dans la BD
+                $( "#choixingredient" ).autocomplete({
+                source: ingre_dispo
+                });
+            }
+        });
+
+});
+
+
 $( function() {
-    $( "#choixingredient" ).autocomplete({
-      source: ingre_dispo
-    });
+    // Sélectionne la catégorie "Repas" par défaut
+    var categorie="3"; // 3 est la valeur de "Repas" dans la BD 
+    $("#choixcategorie").val(categorie);
     $("#form").submit(function(event){
+        //Transmet un tableau des ingredients en string
         $('#form_ingredients').val(JSON.stringify(tab_ing));
         console.log(JSON.stringify(tab_ing));
+        //Transmet un tableau des ingrédients manquant en string
         $('#ingredients_manquants').val(JSON.stringify(ingre_manquants));
         console.log(JSON.stringify(ingre_manquants));
         return true;
@@ -35,6 +61,7 @@ function ajout_ingre_php()
     }
 }  
 
+// Fonction appelée quand click sur bouton Ajouter (pop-up)
 function ajout_infos_php()  
 {  
     $('#choixingredient').val( $('#nomingretext').val());
@@ -51,6 +78,7 @@ function ajout_infos_php()
 
 }  
 
+// Fonction qui insère les ingrédients dans le tableau et les affiche
 function ajout_ingre_js(){
 
     q_ingredient = $('#ingredient').val();

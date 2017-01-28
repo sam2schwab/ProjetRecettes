@@ -1,18 +1,12 @@
 <?php
     session_start(); //déclaré en début de fichier
-	// $req = $bdd->prepare('INSERT INTO commentaires (ID_billet, auteur, commentaires, date_commentaire) VALUES(?, ?, ?, ?)');
-	// $req->execute(array($_GET['billet'], $_POST['auteur'], $_POST['commentaire'], date('Y-m-d H:i:s')));
-
-	// $req->closeCursor();
-
-    print "Bienvenue à cette page cachée.<br><br>";
-
-    // if (isset($_POST['ta']))
-    // {
-    //     print "tableau envoyé !<br><br>";
-        
-    //     $tab_ingre_reconstitue = explode("|",$_POST['tab_ingre']);
     
+    // Connexion à la base de données
+
+    $bdd = new mysqli('192.168.0.105','Recettes','miammiam', 'projet_recette');
+    echo $bdd->connect_error ? "err" : "ok";
+    // $bdd = new PDO('mysql:host=192.168.0.105;dbname=projet_recette;charset=utf8', 'Recettes', 'miammiam');
+
     // Affichage des éléments postés:
 
     if (isset($_POST['titre'])) 
@@ -21,6 +15,11 @@
         print_r($titre);
     }
 
+    if (isset($_POST['choixcategorie'])) 
+    {
+        $categorie = $_POST["choixcategorie"];
+        print_r($categorie);
+    }
     if (isset($_POST['prep-time'])) 
     {
         $preptime = $_POST["prep-time"];
@@ -93,6 +92,24 @@
             echo $tableau_manq[$indice]->type . "<br>" ;
             echo $tableau_manq[$indice]->epicerie . "<br>" ;
         } 
-
     } 
+        //$bdd = new mysqli('192.168.0.105','Recettes','miammiam', 'projet_recette');
+        for ($indice = 0 ; $indice < count($tableau_manq) ; $indice++) 
+        { 
+
+            $sql = "INSERT INTO ingredient (nom_ingredient, type_ingredient, epicerie_ingredient) 
+                            VALUES(\"".$tableau_manq[$indice]->nom."\", 1, 1)";
+                            // VALUES(\"".$tableau_manq[$indice]->nom."\", ".$tableau_manq[$indice]->type.", ".$tableau_manq[$indice]->epicerie.")";
+            echo $sql;
+            $req = $bdd->query($sql);
+            echo $req? "ok" : $bdd->error;
+
+        } 
+
+    // $req = $bdd->prepare('INSERT INTO ingredient (nom_ingredient, type_ingredient, epicerie_ingredient) VALUES(?, ?, ?)');
+	// $req->execute(array($_GET['billet'], $_POST['auteur'], $_POST['commentaire']));
+
+	// $req->closeCursor();
+
+
 ?>

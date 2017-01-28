@@ -1,21 +1,22 @@
 
-<?php $page = "ajout" ;
-$tableau_ingredients = [];
-$portions = ["morceaux","personnes"];
-$mesures = ["x", "cup","c. à soupe", "c. à thé", "L", "dL", "cL", "mL", "oz", "Kg", "g"];
-$ingredients = [];
-$epicerie_dispo = ["Vrac","Segal","Chinois"];
-$type_ingre_dispo = ["epices","cereales","proteines","farine","huiles"];
-$nom_ingre = "";
+<?php 
+
+    session_start(); //déclaré en début de fichier
+    
+    // Connexion à la base de données
+
+    $bdd = new mysqli('192.168.0.105','Recettes','miammiam', 'projet_recette');
+	$bdd->set_charset("utf8");
+
+	$page = "ajout" ;
+	$tableau_ingredients = [];
+	$ingredients = [];
+	$nom_ingre = "";
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-	
-		<!--   Définition fonction pour obtenir un tableau des ingrédients-->
-		<script type="text/javascript">  
-		</script>	
 
 		<meta charset="utf8">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -24,13 +25,34 @@ $nom_ingre = "";
 	<body>
 		<?php include("header.php");?>
 		<article class="container">
+
   		<form action="ajout_post.php" id="form" method="post">
     		 									<!--target="_blank"-->
+		
 		<!--Ajout du titre-->
 		<div class="form-group row">
 			<label for="titre" class="col-sm-2 col-form-label">Titre</label>
 			<div class="col-sm-10">
 				<input class="form-control" name="titre" id="titre" placeholder="Titre">
+			</div>
+		</div>
+
+		<!-- Ajout d'une catégorie -->
+		
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Catégorie</label>
+			<div class="col-sm-10">
+
+				<select class="form-control" name='choixcategorie' id='choixcategorie'>;
+					<?php
+					$results = $bdd->query("SELECT * FROM categorie ORDER by nom_categorie");
+					$results ->data_seek(0);
+					while($row = $results->fetch_assoc()) :
+					?>
+					<option value="<?php echo $row['id_categorie'] ?>" ><?php echo $row['nom_categorie'] ?></option>
+					<?php endwhile; ?>
+				</select>
+
 			</div>
 		</div>
 
@@ -78,10 +100,8 @@ $nom_ingre = "";
 					<input type="number" class="form-control" name="portions" id="portions" placeholder="Portion">
 					<span class="input-group-btn" style="width:0px;"></span>
 					<select class="form-control" id="choixportion" style="margin-left:-1px;">
-						<?php foreach ($portions as $value) {
-							echo '<option>'.$value.'</option>';
-						}
-						?>						
+						<option value="0">morceaux</option>
+						<option value="1">personnes</option>
 					</select>
 				</div>
 			</div>
@@ -91,7 +111,7 @@ $nom_ingre = "";
 		<div class="modal fade" id="ajout_infos_ing" role="dialog">
 			<div class="modal-dialog">
 
-				<!-- Modal content-->
+				<!-- Contenu du pop-up-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -112,10 +132,13 @@ $nom_ingre = "";
 							<label for="typeingre" class="col-sm-2 col-form-label">Type</label>
 							<div class="col-sm-10">
 								<select class="form-control" id="choixtypeing" name="choixtypeing" style="margin-left:-1px;">
-									<?php foreach ($type_ingre_dispo as $value) {
-										echo '<option>'.$value.'</option>';
-									}
-									?>						
+									<?php
+									$results = $bdd->query("SELECT * FROM type_ingredient ORDER by nom_type_ingredient");
+									$results ->data_seek(0);
+									while($row = $results->fetch_assoc()) :
+									?>
+									<option value="<?php echo $row['id_type_ingredient'] ?>" ><?php echo $row['nom_type_ingredient'] ?></option>
+									<?php endwhile; ?>						
 								</select>
 							</div>
 						</div>
@@ -125,10 +148,13 @@ $nom_ingre = "";
 							<label for="epicingre" class="col-sm-2 col-form-label">Épicerie</label>
 							<div class="col-sm-10">
 								<select class="form-control" id="choixepicerieing" name="choixepicerieing" style="margin-left:-1px;">
-									<?php foreach ($epicerie_dispo as $value) {
-										echo '<option>'.$value.'</option>';
-									}
-									?>						
+									<?php
+									$results = $bdd->query("SELECT * FROM epicerie ORDER by nom_epicerie");
+									$results ->data_seek(0);
+									while($row = $results->fetch_assoc()) :
+									?>
+									<option value="<?php echo $row['id_epicerie'] ?>" ><?php echo $row['nom_epicerie'] ?></option>
+									<?php endwhile; ?>
 								</select>
 							</div>
 						</div>
@@ -152,12 +178,14 @@ $nom_ingre = "";
 					<input type="number" class="form-control" id="ingredient" placeholder="Quantité">
 					<span class="input-group-btn" style="width:0px;"></span>
 					<select class="form-control" id="choixmesure" style="margin-left:-1px;">
-						<?php foreach ($mesures as $value) {
-							echo '<option>'.$value.'</option>';
-						}
-						?>						
+						<?php
+						$results = $bdd->query("SELECT * FROM mesure ORDER by id_mesure");
+						$results ->data_seek(0);
+						while($row = $results->fetch_assoc()) :
+						?>
+						<option value="<?php echo $row['id_mesure'] ?>" ><?php echo $row['nom_mesure'] ?></option>
+						<?php endwhile; ?>
 					</select>
-					
 					<span class="input-group-btn" style="width:0px;"></span>
 					<input id="choixingredient" class="form-control" style="margin-left:-2px;" placeholder="Nom ingrédient">
 					<span class="input-group-btn">
