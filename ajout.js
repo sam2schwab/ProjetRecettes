@@ -8,7 +8,8 @@ var ingre_dispo = [
         "citron",
         "carotte"
     ];
-    
+var ingre_manquants = [];
+
 $( function() {
     $( "#choixingredient" ).autocomplete({
       source: ingre_dispo
@@ -16,16 +17,46 @@ $( function() {
     $("#form").submit(function(event){
         $('#form_ingredients').val(JSON.stringify(tab_ing));
         console.log(JSON.stringify(tab_ing));
+        $('#ingredients_manquants').val(JSON.stringify(ingre_manquants));
+        console.log(JSON.stringify(ingre_manquants));
         return true;
     });
 });
 
+// Fonction appelée quand click sur bouton +
+function ajout_ingre_php()  
+{  
+    if (ingre_dispo.indexOf($('#choixingredient').val()) != -1){
+        ajout_ingre_js();
+    }
+    else{
+        $("#ajout_infos_ing").modal();
+        $('#nomingretext').val($('#choixingredient').val());
+    }
+}  
+
+function ajout_infos_php()  
+{  
+    $('#choixingredient').val( $('#nomingretext').val());
+    ingre_dispo.push($('#choixingredient').val());
+
+    n_ingredient = $('#choixingredient').val();
+    type_ingredient = $('#choixtypeing').val();
+    epic_ingredient = $('#choixepicerieing').val(); 
+
+    ingre_manquants.push({nom: n_ingredient, type: type_ingredient, epicerie: epic_ingredient});
+    console.log(ingre_manquants);
+
+    ajout_ingre_js();
+
+}  
+
 function ajout_ingre_js(){
 
-    q_ingredient = document.forms[0].ingredient.value;
-    m_ingredient = document.forms[0].choixmesure.value;
-    n_ingredient = document.forms[0].choixingredient.value; 
-    
+    q_ingredient = $('#ingredient').val();
+    m_ingredient = $('#choixmesure').val();
+    n_ingredient = $('#choixingredient').val(); 
+
     tab_ing.push({id: id_ingr, quantite: q_ingredient, mesure: m_ingredient, nom: n_ingredient});
     console.log(tab_ing);
     iLen = tab_ing.length;
@@ -38,20 +69,6 @@ function ajout_ingre_js(){
     $(btn_ingredient).attr("type","button").html("-").addClass("btn btn-danger btn-xs pull-right");
     $(pre_ingredient).append(btn_ingredient);
     $("#liste_ingredients").append(pre_ingredient);
-
-    // Vérification de l'existence d'un ingrédient dans le tableau
-    var presence_tableau = "non";
-    for(var i=0; i < ingre_dispo.length; i++)
-    {
-        if (n_ingredient == ingre_dispo[i]){
-            presence_tableau = "oui";
-        }
-    }
-    // Si l'ingrédient n'est pas présent, ajout dans le tableau du nouvel ingrédient
-    if (presence_tableau == "non"){
-        ingre_dispo.push(n_ingredient);
-    }
-  
 
     $(btn_ingredient).click((function(){
         $(pre_ingredient).remove();
