@@ -13,7 +13,12 @@ $( function() {
     $( "#choixingredient" ).autocomplete({
       source: ingre_dispo
     });
-  } );
+    $("#form").submit(function(event){
+        $('#tab_ingre').val(JSON.stringify(tab_ing));
+        console.log(JSON.stringify(tab_ing));
+        return true;
+    });
+});
 
 function ajout_ingre_js(){
 

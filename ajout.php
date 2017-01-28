@@ -16,13 +16,13 @@ $ingredients = [];
 	<body>
 		<?php include("header.php");?>
 		<article class="container">
-  		<form action="ajout_post.php" method="post" target="_blank">
-    		
+  		<form action="ajout_post.php" id="form" method="post">
+    		 									<!--target="_blank"-->
 			<!--Ajout du titre-->
 			<div class="form-group row">
       			<label for="titre" class="col-sm-2 col-form-label">Titre</label>
       			<div class="col-sm-10">
-        			<input class="form-control" id="titre" placeholder="Titre">
+        			<input class="form-control" name="titre" id="titre" placeholder="Titre">
       			</div>
     		</div>
 
@@ -31,7 +31,7 @@ $ingredients = [];
 				<label class="col-sm-2 col-form-label">Temps de préparation</label>
 				<div class="col-sm-10">
 					<div class="input-group">
-						<input type="number" class="form-control" id="prep-time" placeholder="Minutes">
+						<input type="number" class="form-control" name="prep-time" id="prep-time" placeholder="Minutes">
 						<div class="input-group-addon">mn</div>
 					</div>
 				</div>
@@ -55,7 +55,7 @@ $ingredients = [];
 
 					<div class="col-sm-10">
 						<div class="input-group">
-							<input type="number" class="form-control" id="cook-time" placeholder="Minutes">
+							<input type="number" class="form-control" name="cook-time" id="cook-time" placeholder="Minutes">
 							<div class="input-group-addon">mn</div>
 						</div>
 					</div>
@@ -66,7 +66,7 @@ $ingredients = [];
 				<label class="col-sm-2 col-form-label">Portions</label>
 				<div class="col-sm-10">
 					<div class="input-group">
-						<input type="number" class="form-control" id="portions" placeholder="Portion">
+						<input type="number" class="form-control" name="portions" id="portions" placeholder="Portion">
 						<span class="input-group-btn" style="width:0px;"></span>
 						<select class="form-control" id="choixportion" style="margin-left:-1px;">
 							<?php foreach ($portions as $value) {
@@ -103,7 +103,7 @@ $ingredients = [];
 						<span class="input-group-btn" style="width:0px;"></span>
   						<input id="choixingredient" class="form-control" style="margin-left:-2px;" placeholder="Nom ingrédient">
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-info" id="ajoutingredient" style="margin-left:-2px;" onclick="ajout_ingre_php()">
+							<button type="button" class="btn btn-info" name="ajoutingredient" id="ajoutingredient" style="margin-left:-2px;" onclick="ajout_ingre_php()">
 								<span class="glyphicon glyphicon-plus"></span>
 							</button>		
 						</span>
@@ -111,7 +111,7 @@ $ingredients = [];
 					<div>
 						<div id="liste_ingredients">
 						</div>
-						<input type="hidden" id="tab_ingre" name="tab_ingre" value="<?php print base64_encode(serialize($tableau_ingredients)) ?>">
+						<input type="hidden" id="tab_ingre" name="tab_ingre" value="">
 					</div>
 				</div>
 			</div>
@@ -121,7 +121,7 @@ $ingredients = [];
 				<label class="col-sm-2 col-form-label">Instructions</label>
 				<div class="col-sm-10">
 					<div class="form-group">
-						<textarea class="form-control" rows="5" id="instructions"></textarea>
+						<textarea class="form-control" rows="5" name="instructions" id="instructions"></textarea>
 					</div>
 				</div>
 			</div>
@@ -136,7 +136,7 @@ $ingredients = [];
             	            Parcourir<input type="file" style="display: none;">
                 	    </span>
                 		</label>
-						<input type="text" class="form-control" id="photo" readonly>
+						<input type="text" class="form-control" name="photo" id="photo" readonly>
             		</div>
             		<span class="help-block">
             	    	Sélectionner une photo
@@ -147,7 +147,7 @@ $ingredients = [];
 
     	<div class="form-group row">
       		<div class="offset-sm-2 col-sm-10">
-        		<button type="submit" class="btn btn-primary pull-right">Ajouter la recette !</button>
+        		<button id="ajouter" type="submit" class="btn btn-primary pull-right">Ajouter la recette !</button>
       		</div>
     	</div>
   		</form>
