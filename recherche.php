@@ -16,7 +16,10 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 		<article class="container">
 			<div class="col-sm-3">
 				<div class="panel panel-default">
-					<div class="panel-heading">Critères de recherche</div>
+					<div class="panel-heading clearfix">
+						<h4 class="panel-title pull-left" style="padding-top: 7.5px;">Filtrer la recherche</h4>
+						<button id="clear_filters" class="btn btn-sm btn-danger pull-right"><span class="glyphicon glyphicon-trash"></span></button>
+					</div>
 					<div class="panel-body">
 						<!--Mot-cles-->
 						<form id="keyword-form">
@@ -97,19 +100,47 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 				</div>
 			</div>
 			<div class="col-sm-9">
-			<?php for($i = 0;$i < 20; $i++):?>
-				<div>
-					<img src="pasta.jpg" class="centered-and-cropped pull-left" width="100" height="100" alt="photo">
-					<div class="recipe-details">
-						<h4><div class="starrr starr-readonly pull-right" data-rating='4'></div></h4>
-						<h4><strong>Pâtes aux crevettes et aux olives</strong></h4>
-						<p><span class="glyphicon glyphicon-tag"></span> Catégorie : Repas<p>
-						<p><span class="glyphicon glyphicon-time"></span> Préparation : 15 min<p>
-						<p><span class="glyphicon glyphicon-fire"></span> Cuisson : 25 min<p>
+				<div class="btn-group btn-group-justified">
+					<div class="btn-group">
+						<button class="btn btn-default btn-sort text-left">
+							<span class="pull-left">Nom</span>
+							<span class="glyphicon glyphicon-sort-by-attributes pull-right"></span>
+						</button>
+					</div>
+					<div class="btn-group">
+						<button class="btn btn-default btn-sort text-left">
+							<span class="pull-left">Appréciation</span>
+							<span class="glyphicon glyphicon-sort text-muted pull-right"></span>
+						</button>
+					</div>
+					<div class="btn-group">
+						<button class="btn btn-default btn-sort text-left">
+							<span class="pull-left">Temps de préparation</span>
+							<span class="glyphicon glyphicon-sort text-muted pull-right"></span>
+						</button>
 					</div>
 				</div>
-				<hr>
-			<?php endfor; ?>
+				<?php for($i = 0;$i < 10; $i++):
+					if($i != 0):?>
+					<hr>
+					<?php endif; ?>
+					<a>
+						<div>
+							<img src="pasta.jpg" class="centered-and-cropped pull-left" width="100" height="100" alt="photo">
+							<div class="recipe-details">
+								<h4><div class="starrr starr-readonly pull-right" data-rating='4'></div></h4>
+								<h4><strong>Pâtes aux crevettes et aux olives</strong></h4>
+								<p><span class="glyphicon glyphicon-tag"></span> Catégorie : Repas<p>
+								<p><span class="glyphicon glyphicon-time"></span> Préparation : 15 min<p>
+								<p><span class="glyphicon glyphicon-fire"></span> Cuisson : 25 min<p>
+							</div>
+						</div>
+					</a>
+				<?php endfor; ?>
+				<ul class="pager">
+					<li><a href="#">Previous</a></li>
+					<li><a href="#">Next</a></li>
+				</ul>
 			</div>			
 		</article>
 	</body>
