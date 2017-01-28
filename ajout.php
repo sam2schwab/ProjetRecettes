@@ -55,7 +55,7 @@ $ingredients = [];
 
 					<div class="col-sm-10">
 						<div class="input-group">
-							<input type="number" class="form-control" name="cook-time" id="cook-time" placeholder="Minutes">
+							<input type="number" class="form-control"name="cook-time" id="cook-time" placeholder="Minutes">
 							<div class="input-group-addon">mn</div>
 						</div>
 					</div>
@@ -79,6 +79,7 @@ $ingredients = [];
 			</div>
 			
 			<!--Ajout des ingrédients-->
+			<input type="hidden" id="form_ingredients" name="form_ingredients" value="">
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Ingrédients</label>
 				<div class="col-sm-10">

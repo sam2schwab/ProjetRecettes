@@ -58,19 +58,18 @@
     }
 
     // Récupération des ingrédients
-    if (isset($_POST['tab_ingre'])) 
+    if (isset($_POST['form_ingredients'])) 
     {
         print_r("<br>Le tableau existe!");
-        $tableau = $_POST["tab_ingre"];
-        $tab = unserialize(base64_decode($tableau));
+        $tableau = json_decode($_POST["form_ingredients"]);
         
-        echo count($tab) . "<br><br>";
-        print_r($tab);
+        echo count($tableau) . "<br><br>";
+        print_r($tableau);
 
         //utilisation normale ensuite 
-        for ($indice = 0 ; $indice < count($tab) ; $indice++) 
+        for ($indice = 0 ; $indice < count($tableau) ; $indice++) 
         { 
-            echo $tab[$indice][2] . "<br>" ;
+            echo $tableau[$indice]->nom . "<br>" ;
         } 
 
     } 

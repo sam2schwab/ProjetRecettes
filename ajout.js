@@ -14,7 +14,7 @@ $( function() {
       source: ingre_dispo
     });
     $("#form").submit(function(event){
-        $('#tab_ingre').val(JSON.stringify(tab_ing));
+        $('#form_ingredients').val(JSON.stringify(tab_ing));
         console.log(JSON.stringify(tab_ing));
         return true;
     });
