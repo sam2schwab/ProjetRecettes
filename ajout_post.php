@@ -57,6 +57,7 @@
         print_r($photo);
     }
 
+
     // Récupération des ingrédients
     if (isset($_POST['form_ingredients'])) 
     {
@@ -65,11 +66,32 @@
         
         echo count($tableau) . "<br><br>";
         print_r($tableau);
+        echo "<br>";
 
         //utilisation normale ensuite 
         for ($indice = 0 ; $indice < count($tableau) ; $indice++) 
         { 
             echo $tableau[$indice]->nom . "<br>" ;
+        } 
+
+    }
+
+    // Récupération des ingrédients manquants
+    if (isset($_POST['ingredients_manquants'])) 
+    {
+        print_r("<br>Le tableau existe!");
+        $tableau_manq = json_decode($_POST["ingredients_manquants"]);
+        
+        echo count($tableau_manq) . "<br><br>";
+        print_r($tableau_manq);
+        echo "<br>";
+
+        //utilisation normale ensuite 
+        for ($indice = 0 ; $indice < count($tableau_manq) ; $indice++) 
+        { 
+            echo $tableau_manq[$indice]->nom . "<br>" ;
+            echo $tableau_manq[$indice]->type . "<br>" ;
+            echo $tableau_manq[$indice]->epicerie . "<br>" ;
         } 
 
     } 
