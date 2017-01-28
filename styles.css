@@ -23,9 +23,27 @@ html {
      object-fit: cover;
 }
 
+#list-recipes hr {
+    margin: 0px;
+}
+
 .recipe-details {
     height: 100px;
-    margin-left: 110px;
+    margin-left: 125px;
+}
+
+.recipe-info {
+    height: 150px;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+
+.recipe-info img {
+    margin-top: 10px;
+}
+
+.recipe-info:hover {
+    background-color: #f8f8f8;
 }
 
 .starrr {
@@ -36,7 +54,13 @@ html {
     margin-right: 3px
 }
 
-
 .ingredient {
     margin-bottom: -1px;
 }
+
+.recipe-link:link { color: rgb(51, 51, 51); text-decoration: none; }
+.recipe-link:hover { color: rgb(51, 51, 51); text-decoration: none; }
+.recipe-link:active { color: rgb(51, 51, 51); text-decoration: none; }
+.recipe-link:visited { color: rgb(51, 51, 51); text-decoration: none; }
+
+

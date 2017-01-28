@@ -120,13 +120,14 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 						</button>
 					</div>
 				</div>
+				<div id="list-recipes">
 				<?php for($i = 0;$i < 10; $i++):
 					if($i != 0):?>
 					<hr>
 					<?php endif; ?>
-					<a>
-						<div>
-							<img src="pasta.jpg" class="centered-and-cropped pull-left" width="100" height="100" alt="photo">
+					<a class="recipe-link" href="#">
+						<div class="recipe-info">
+							<img src="pasta.jpg" class="centered-and-cropped pull-left" width="110" height="110" alt="photo">
 							<div class="recipe-details">
 								<h4><div class="starrr starr-readonly pull-right" data-rating='4'></div></h4>
 								<h4><strong>Pâtes aux crevettes et aux olives</strong></h4>
@@ -137,6 +138,7 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 						</div>
 					</a>
 				<?php endfor; ?>
+				</div>
 				<ul class="pager">
 					<li><a href="#">Previous</a></li>
 					<li><a href="#">Next</a></li>
