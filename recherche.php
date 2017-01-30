@@ -1,4 +1,6 @@
 <?php $page = "recherche";
+$mysqli = new mysqli("192.168.0.105", "Recettes", "miammiam", "projet_recette");
+$mysqli->set_charset('utf8');
 $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 ?>
 
@@ -90,11 +92,14 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 						<form id="category-form">
 							<button type="reset" class="close">&times;</button>
 							<h4><strong>Catégories</strong></h4>
-							<?php foreach ($categories as $value) {
-							echo '<div class="checkbox">
-								<label><input type="checkbox" value="">'.$value.'</label>
-							</div>';
-							}?>
+							<?php
+							$res = $mysqli->query("SELECT * FROM categorie");
+							$res->data_seek(0);
+							while($row = $res->fetch_assoc()):?>
+							<div class="checkbox">
+								<label><input type="checkbox" value="<?php echo $row['id_categorie']?>"><?php echo $row['nom_categorie']?></label>
+							</div>
+							<?php endwhile;?>
 						</form>
 					</div>
 				</div>
@@ -102,46 +107,28 @@ $categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
 			<div class="col-sm-9">
 				<div class="btn-group btn-group-justified">
 					<div class="btn-group">
-						<button class="btn btn-default btn-sort text-left">
+						<button class="btn btn-default btn-sort text-left update" value="titre_recette">
 							<span class="pull-left">Nom</span>
 							<span class="glyphicon glyphicon-sort-by-attributes pull-right"></span>
 						</button>
 					</div>
 					<div class="btn-group">
-						<button class="btn btn-default btn-sort text-left">
+						<button class="btn btn-default btn-sort text-left update" value="note_recette">
 							<span class="pull-left">Appréciation</span>
 							<span class="glyphicon glyphicon-sort text-muted pull-right"></span>
 						</button>
 					</div>
 					<div class="btn-group">
-						<button class="btn btn-default btn-sort text-left">
+						<button class="btn btn-default btn-sort text-left update" value="temps_preparation_recette">
 							<span class="pull-left">Temps de préparation</span>
 							<span class="glyphicon glyphicon-sort text-muted pull-right"></span>
 						</button>
 					</div>
+					<input type="hidden" id="sorting" value="titre_recette">
+					<input type="hidden" id="order" value="asc">
 				</div>
 				<div id="list-recipes">
-				<?php 
-					$mysqli = new mysqli("192.168.0.105", "Recettes", "miammiam", "projet_recette");
-					$mysqli->set_charset('utf8');
-					$res = $mysqli->query("SELECT * FROM recette r, categorie c where r.categorie_recette = c.id_categorie ORDER BY titre_recette ASC");
-					$res->data_seek(0);
-					while($row = $res->fetch_assoc()):?>
-					<hr>
-					<a class="recipe-link" href="#">
-						<div class="recipe-info">
-							<img src="images/<?php echo $row['photo_recette']?>" class="centered-and-cropped pull-left" width="110" height="110" alt="photo">
-							<div class="recipe-details">
-								<h4><div class="starrr starr-readonly pull-right" data-rating=<?php echo $row['note_recette']?>></div></h4>
-								<h4><strong><?php echo $row['titre_recette']?></strong></h4>
-								<p><span class="glyphicon glyphicon-tag"></span> Catégorie : <?php echo $row['nom_categorie']?><p>
-								<p><span class="glyphicon glyphicon-time"></span> Préparation : <?php echo $row['temps_preparation_recette']?> min<p>
-								<p><span class="glyphicon glyphicon-fire"></span> Cuisson : <?php echo $row['cuisson_recette'] ? $row['temps_cuisson_recette'].' min' : 'Sans'  ?><p>
-							</div>
-						</div>
-					</a>
-				<?php endwhile; ?>
-				<hr>
+				<?php include("recherche_resultats.php");?>
 				</div>
 				<div class="text-center">
 					<ul class="pagination">

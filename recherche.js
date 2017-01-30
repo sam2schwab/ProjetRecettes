@@ -19,8 +19,24 @@ $(function() {
         $(".btn-sort").not(this).children(".glyphicon").removeClass('glyphicon-sort-by-attributes-alt glyphicon-sort-by-attributes').addClass('text-muted glyphicon-sort');
         $(this).children(".glyphicon").removeClass('text-muted');
         if($(this).children(".glyphicon").hasClass('glyphicon-sort-by-attributes'))
+        {
             $(this).children(".glyphicon").removeClass('glyphicon-sort-by-attributes').addClass('glyphicon-sort-by-attributes-alt');
+            $("#order").val("desc");
+        }
         else
+        {
             $(this).children(".glyphicon").removeClass('glyphicon-sort-by-attributes-alt glyphicon-sort').addClass('glyphicon-sort-by-attributes');
+            $("#order").val("asc");
+        }
+        $("#sorting").val(this.value);
+    })
+
+    $("button.update").click(function(event) {
+        var data = {};
+        data['order'] = $("#order").val();
+        data['sorting'] = $("#sorting").val();
+        $("#list-recipes").load("recherche_resultats.php",data,function(){
+            $(".starrr").starrr();
+        });
     })
 });
