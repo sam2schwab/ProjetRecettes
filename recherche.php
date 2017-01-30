@@ -1,7 +1,6 @@
-<?php $page = "recherche";
-$mysqli = new mysqli("192.168.0.105", "Recettes", "miammiam", "projet_recette");
-$mysqli->set_charset('utf8');
-$categories = ["Entrée","Repas","Dessert","Pain","Conseil","Sauce","Boisson"];
+<?php
+	$page = "recherche";
+	require_once('db_connect.php');
 ?>
 
 <!DOCTYPE html>

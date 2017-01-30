@@ -1,9 +1,8 @@
 <?php
+    require_once('db_connect.php');
+
     if($_POST)
     {
-        $mysqli = new mysqli("192.168.0.105", "Recettes", "miammiam", "projet_recette");
-        $mysqli->set_charset('utf8');
-
         $sorting = isset($_POST['sorting']) ? $_POST['sorting'] : "titre_recette";
         $order = isset($_POST['order']) ? $_POST['order'] : "ASC";
 
