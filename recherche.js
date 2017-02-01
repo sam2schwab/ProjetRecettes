@@ -1,6 +1,7 @@
 /// <reference path="../typings/jquery/jquery.d.ts"/>
 $(function() {
 
+
     //clear filters
     $("#clear_filters").click(function(event){
         $("form").trigger("reset");
@@ -31,12 +32,17 @@ $(function() {
         $("#sorting").val(this.value);
     })
 
-    $("button.update").click(function(event) {
+    $(".update").click(function(event) {
         var data = {};
-        data['order'] = $("#order").val();
-        data['sorting'] = $("#sorting").val();
-        $("#list-recipes").load("recherche_resultats.php",data,function(){
-            $(".starrr").starrr();
+        data['order'] = $('#order').val();
+        data['sorting'] = $('#sorting').val();
+        data['category'] = $('#category input:checked').map(function(){
+            return $(this).val();
+        }).get();
+        data['cooking'] = $('#cooking-form input:checked').val();
+        console.log(data);
+        $('#list-recipes').load('recherche_resultats.php',data,function(){
+            $('#list-recipes .starrr').starrr();
         });
     })
 });

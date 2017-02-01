@@ -95,7 +95,7 @@
 							$res = $mysqli->query("SELECT * FROM categorie");
 							$res->data_seek(0);
 							while($row = $res->fetch_assoc()):?>
-							<div class="checkbox">
+							<div class="checkbox" id="category">
 								<label><input type="checkbox" value="<?php echo $row['id_categorie']?>"><?php echo $row['nom_categorie']?></label>
 							</div>
 							<?php endwhile;?>
