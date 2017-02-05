@@ -6,6 +6,7 @@
         $sorting = isset($_POST['sorting']) ? $_POST['sorting'] : 'titre_recette';
         $order = isset($_POST['order']) ? $_POST['order'] : 'ASC';
         $category = isset($_POST['category']) ? $_POST['category'] : [];
+        $rating = isset($_POST['rating']) ? $_POST['rating'] : 0;
 
         $sql = 'SELECT * FROM recette r inner join categorie c on r.categorie_recette=c.id_categorie ';
 
@@ -43,6 +44,13 @@
             $sql .= $isWhere ? 'AND ( ' : 'WHERE ( ';
             $isWhere = true;
             $sql .= 'temps_preparation_recette <= '.$_POST['prep-time'].' )';
+        }
+
+        if($rating > 0)
+        {
+            $sql .= $isWhere ? 'AND ( ' : 'WHERE ( ';
+            $isWhere = true;
+            $sql .= 'note_recette >= '.$rating.' )';
         }
 
         $sql .= "ORDER BY $sorting $order";

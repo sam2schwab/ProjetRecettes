@@ -1,6 +1,14 @@
 /// <reference path="../typings/jquery/jquery.d.ts"/>
+
+var ratingSearch = 0;
+
 $(function() {
 
+    //remember the value of the star-rating search
+    $('#rating-search').on('starrr:change', function(e, value){
+        ratingSearch = value;
+        updateList();
+    });
 
     //clear filters
     $("#clear_filters").click(function(event){
@@ -10,7 +18,8 @@ $(function() {
     
     $("form").on("reset",function(event){
         $(this).find("input[data-role='tagsinput']").tagsinput('removeAll');
-        updateList();
+        //setTimeout to ensure form is reset before calling updateList
+        setTimeout(updateList);
     });
     
     $("#rating-form").on("reset",function(event){
@@ -49,6 +58,7 @@ function updateList() {
     data['cooking'] = $('#cooking-form input:checked').val();
     data['prep-time'] = $('#prep-time input').val();
     data['cook-time'] = $('#cook-time input').val();
+    data['rating'] = ratingSearch;
     console.log(data);
     $('#list-recipes').load('recherche_resultats.php',data,function(){
         $('#list-recipes .starrr').starrr();
