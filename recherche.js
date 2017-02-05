@@ -5,10 +5,12 @@ $(function() {
     //clear filters
     $("#clear_filters").click(function(event){
         $("form").trigger("reset");
+        updateList();
     });
     
     $("form").on("reset",function(event){
         $(this).find("input[data-role='tagsinput']").tagsinput('removeAll');
+        updateList();
     });
     
     $("#rating-form").on("reset",function(event){
@@ -32,17 +34,23 @@ $(function() {
         $("#sorting").val(this.value);
     })
 
-    $(".update").click(function(event) {
-        var data = {};
-        data['order'] = $('#order').val();
-        data['sorting'] = $('#sorting').val();
-        data['category'] = $('#category input:checked').map(function(){
-            return $(this).val();
-        }).get();
-        data['cooking'] = $('#cooking-form input:checked').val();
-        console.log(data);
-        $('#list-recipes').load('recherche_resultats.php',data,function(){
-            $('#list-recipes .starrr').starrr();
-        });
-    })
+    $(".update-onclick").click(updateList);
+    $(".update-onchange").change(updateList);
+
 });
+
+function updateList() {
+    var data = {};
+    data['order'] = $('#order').val();
+    data['sorting'] = $('#sorting').val();
+    data['category'] = $('#category input:checked').map(function(){
+        return $(this).val();
+    }).get();
+    data['cooking'] = $('#cooking-form input:checked').val();
+    data['prep-time'] = $('#prep-time input').val();
+    data['cook-time'] = $('#cook-time input').val();
+    console.log(data);
+    $('#list-recipes').load('recherche_resultats.php',data,function(){
+        $('#list-recipes .starrr').starrr();
+    });
+}

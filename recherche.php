@@ -56,10 +56,10 @@
 							<button type="reset" class="close">&times;</button>
 							<h4><strong>Cuisson</strong></h4>
 							<div class="radio">
-								<label><input type="radio" name="cooking" value="with">Avec</label>
+								<label><input class="update-onclick" type="radio" name="cooking" value="with">Avec</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="cooking" value="without">Sans</label>
+								<label><input class="update-onclick" type="radio" name="cooking" value="without">Sans</label>
 							</div>
 						</form>
 						<hr>
@@ -71,7 +71,7 @@
 								<label for="prep-time">Préparation</label>
 								<div class="input-group" id="prep-time">
 									<span class="input-group-addon">&#8804;</span>
-									<input type="number" min="0" class="form-control">
+									<input type="number" min="0" class="form-control update-onchange">
 									<span class="input-group-addon">mn</span>
 								</div>
 							</div>
@@ -80,7 +80,7 @@
 									<label for="cook-time">Cuisson</label>
 									<div class="input-group" id="cook-time">
 										<span class="input-group-addon">&#8804;</span>
-										<input type="number" min="0" class="form-control">
+										<input type="number" min="0" class="form-control update-onchange">
 										<span class="input-group-addon">mn</span>
 									</div>
 								</div>
@@ -96,7 +96,7 @@
 							$res->data_seek(0);
 							while($row = $res->fetch_assoc()):?>
 							<div class="checkbox" id="category">
-								<label><input type="checkbox" value="<?php echo $row['id_categorie']?>"><?php echo $row['nom_categorie']?></label>
+								<label><input type="checkbox" class="update-onclick" value="<?php echo $row['id_categorie']?>"><?php echo $row['nom_categorie']?></label>
 							</div>
 							<?php endwhile;?>
 						</form>
@@ -106,19 +106,19 @@
 			<div class="col-sm-9">
 				<div class="btn-group btn-group-justified">
 					<div class="btn-group">
-						<button class="btn btn-default btn-sort text-left update" value="titre_recette">
+						<button class="btn btn-default btn-sort text-left update-onclick" value="titre_recette">
 							<span class="pull-left">Nom</span>
 							<span class="glyphicon glyphicon-sort-by-attributes pull-right"></span>
 						</button>
 					</div>
 					<div class="btn-group">
-						<button class="btn btn-default btn-sort text-left update" value="note_recette">
+						<button class="btn btn-default btn-sort text-left update-onclick" value="note_recette">
 							<span class="pull-left">Appréciation</span>
 							<span class="glyphicon glyphicon-sort text-muted pull-right"></span>
 						</button>
 					</div>
 					<div class="btn-group">
-						<button class="btn btn-default btn-sort text-left update" value="temps_preparation_recette">
+						<button class="btn btn-default btn-sort text-left update-onclick" value="temps_preparation_recette">
 							<span class="pull-left">Temps de préparation</span>
 							<span class="glyphicon glyphicon-sort text-muted pull-right"></span>
 						</button>

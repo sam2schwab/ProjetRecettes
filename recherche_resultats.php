@@ -30,6 +30,21 @@
             $sql .= 'cuisson_recette = '.($_POST['cooking'] == 'with'?'1 ) ':'0 ) ');
         }
 
+
+        if($_POST['cook-time'] != '' && !(isset($_POST['cooking']) && $_POST['cooking'] != 'with'))
+        {
+            $sql .= $isWhere ? 'AND ( ' : 'WHERE ( ';
+            $isWhere = true;
+            $sql .= 'temps_cuisson_recette <= '.$_POST['cook-time'].' )';
+        }
+
+        if($_POST['prep-time'] != '')
+        {
+            $sql .= $isWhere ? 'AND ( ' : 'WHERE ( ';
+            $isWhere = true;
+            $sql .= 'temps_preparation_recette <= '.$_POST['prep-time'].' )';
+        }
+
         $sql .= "ORDER BY $sorting $order";
         echo $sql;
     }
@@ -39,7 +54,7 @@
     }
 
     $res = $mysqli->query($sql);
-    if($res):
+    if($res && $res->num_rows !== 0):
         $res->data_seek(0);
         while($row = $res->fetch_assoc()):?>
             <hr>
